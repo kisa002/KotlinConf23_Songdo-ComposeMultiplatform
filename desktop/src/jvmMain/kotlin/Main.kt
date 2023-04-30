@@ -4,7 +4,7 @@ import com.haeyum.common.App
 
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+    Window(onCloseRequest = ::exitApplication, title = "KotlinConf'23 Stopwatch") {
         App()
     }
 }
