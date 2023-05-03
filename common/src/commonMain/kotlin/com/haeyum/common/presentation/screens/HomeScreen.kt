@@ -19,15 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.haeyum.common.theme.KawaiBlue
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     val infiniteTransition = rememberInfiniteTransition()
     val animateBackgroundColor by infiniteTransition.animateColor(
         initialValue = Color(0xFF8E2DE2),
-        targetValue = Color(0xFF4A00E0),
+        targetValue = KawaiBlue,
         animationSpec = infiniteRepeatable(
-            animation = tween(3000),
+            animation = tween(durationMillis = 2000, easing = { fraction ->
+                0.5f * (1 - Math.cos(Math.PI * fraction)).toFloat()
+            }),
             repeatMode = RepeatMode.Reverse
         )
     )
