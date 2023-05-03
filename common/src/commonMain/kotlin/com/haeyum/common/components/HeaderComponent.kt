@@ -1,7 +1,11 @@
 package com.haeyum.common.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -11,12 +15,11 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun Header(title: String) {
     Row(
-        modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp).background(Color.White).drawBehind {
+        modifier = Modifier.fillMaxWidth().background(Color.White).drawBehind {
             drawLine(
                 color = Color.Gray,
                 start = Offset(0f, size.height),
@@ -26,7 +29,9 @@ fun Header(title: String) {
         }.padding(8.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = title, modifier = Modifier.padding(start = 8.dp), fontSize = 24.sp, fontWeight = FontWeight.Bold
+            text = title,
+            modifier = Modifier.padding(start = 8.dp).padding(vertical = 8.dp),
+            style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold)
         )
     }
 }
