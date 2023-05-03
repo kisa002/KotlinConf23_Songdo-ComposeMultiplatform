@@ -9,13 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.haeyum.common.components.Header
 import com.haeyum.common.components.MainBottomNavigation
+import com.haeyum.common.presentation.screens.HomeScreen
+import com.haeyum.common.presentation.screens.SettingsScreen
 import com.haeyum.common.presentation.screens.StopwatchScreen
 
 @Composable
 fun App() {
     Column(modifier = Modifier.fillMaxSize().background(color = Color(0xFFEFEFEF))) {
         Header(title = "Stopwatch")
-        StopwatchScreen(modifier = Modifier.fillMaxWidth().weight(1f))
+        HomeScreen(modifier = Modifier.fillMaxWidth().weight(1f))
+//        StopwatchScreen(modifier = Modifier.fillMaxWidth().weight(1f))
+//        SettingsScreen(modifier = Modifier.fillMaxWidth().weight(1f))
         MainBottomNavigation()
     }
 }
