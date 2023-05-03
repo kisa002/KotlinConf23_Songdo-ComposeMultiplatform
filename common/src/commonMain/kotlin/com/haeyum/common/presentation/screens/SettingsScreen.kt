@@ -17,7 +17,6 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(24.dp)) {
         SomethingValue(value = value, onValueChange = { value = it })
         SomethingSwitch(checked = checked, onCheckedChange = { checked = it })
-        ContactButton()
         Spacer(modifier = Modifier.weight(1f))
         VersionText(version = getVersionName())
     }
@@ -40,13 +39,6 @@ private fun SomethingSwitch(checked: Boolean, onCheckedChange: (Boolean) -> Unit
     ) {
         Text(text = "Something Switch", style = MaterialTheme.typography.subtitle1)
         Switch(checked = checked, onCheckedChange = onCheckedChange)
-    }
-}
-
-@Composable
-private fun ContactButton(modifier: Modifier = Modifier) {
-    Button(onClick = {}, modifier = modifier.fillMaxWidth(1f)) {
-        Text(text = "Contact to Developer")
     }
 }
 
