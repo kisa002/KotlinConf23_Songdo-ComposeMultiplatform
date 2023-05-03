@@ -1,6 +1,5 @@
 package com.haeyum.common
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,7 +7,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.haeyum.common.components.Header
 import com.haeyum.common.components.MainBottomNavigation
 import com.haeyum.common.presentation.ScreenState
@@ -41,8 +39,7 @@ fun App(viewModel: AppViewModel = AppViewModel(StopwatchUtil())) {
                         onStart = viewModel::start,
                         onPause = viewModel::pause,
                         onResume = viewModel::resume,
-                        onReset = viewModel::reset,
-                        onLab = {}
+                        onReset = viewModel::reset
                     )
 
                     ScreenState.SETTINGS -> SettingsScreen(modifier = Modifier.fillMaxWidth().weight(1f))

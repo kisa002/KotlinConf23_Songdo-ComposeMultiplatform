@@ -22,8 +22,7 @@ fun StopwatchScreen(
     onStart: () -> Unit,
     onPause: () -> Unit,
     onResume: () -> Unit,
-    onReset: () -> Unit,
-    onLab: () -> Unit
+    onReset: () -> Unit
 ) {
     Column(
         modifier = modifier.padding(vertical = 32.dp),
@@ -35,8 +34,7 @@ fun StopwatchScreen(
             onStart = onStart,
             onPause = onPause,
             onResume = onResume,
-            onReset = onReset,
-            onLab = { /*TODO*/ }
+            onReset = onReset
         )
     }
 }
@@ -48,8 +46,7 @@ private fun ActionButtons(
     onStart: () -> Unit,
     onPause: () -> Unit,
     onResume: () -> Unit,
-    onReset: () -> Unit,
-    onLab: () -> Unit
+    onReset: () -> Unit
 ) {
     Text(
         text = formattedTimeString,
@@ -63,7 +60,7 @@ private fun ActionButtons(
         when (stopwatchState) {
             StopwatchState.START -> {
                 PrimaryButton(text = "Pause", onClick = onPause)
-                SecondaryButton(text = "Lab", onClick = onLab)
+                SecondaryButton(text = "Reset", enabled = false, onClick = onReset)
             }
 
             StopwatchState.PAUSE -> {
@@ -73,7 +70,6 @@ private fun ActionButtons(
 
             StopwatchState.STOP -> {
                 PrimaryButton(text = "Start", onClick = onStart)
-                SecondaryButton(text = "Lab", enabled = false, onClick = onLab)
             }
         }
     }
