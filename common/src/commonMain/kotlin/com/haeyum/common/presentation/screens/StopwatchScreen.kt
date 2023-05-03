@@ -1,7 +1,6 @@
 package com.haeyum.common.presentation.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,12 +18,12 @@ import com.haeyum.common.supports.StopwatchStateValue
 import com.haeyum.common.supports.rememberStopwatchState
 
 @Composable
-fun StopwatchScreen() {
+fun StopwatchScreen(modifier: Modifier = Modifier) {
     val stopwatchState by rememberStopwatchState()
 
     Column(
+        modifier = modifier.padding(vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize().padding(vertical = 32.dp),
     ) {
         ActionButtons(
             stopwatchStateValue = stopwatchState.stateValue,
