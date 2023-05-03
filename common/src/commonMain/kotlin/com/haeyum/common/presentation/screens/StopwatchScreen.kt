@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -14,38 +12,38 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.haeyum.common.components.PrimaryButton
 import com.haeyum.common.components.SecondaryButton
-import com.haeyum.common.supports.StopwatchStateValue
-import com.haeyum.common.supports.rememberStopwatchState
+import com.haeyum.common.supports.StopwatchState
 
 @Composable
-fun StopwatchScreen(modifier: Modifier = Modifier) {
-    val stopwatchState by rememberStopwatchState()
-
+fun StopwatchScreen(
+    modifier: Modifier = Modifier,
+    stopwatchState: StopwatchState,
+    formattedTimeString: String,
+    onStart: () -> Unit,
+    onPause: () -> Unit,
+    onResume: () -> Unit,
+    onReset: () -> Unit,
+    onLab: () -> Unit
+) {
     Column(
         modifier = modifier.padding(vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ActionButtons(
-            stopwatchStateValue = stopwatchState.stateValue,
-            formattedTimeString = stopwatchState.formattedTimeString,
-            onStart = stopwatchState::start,
-            onPause = stopwatchState::pause,
-            onResume = stopwatchState::resume,
-            onReset = stopwatchState::reset,
+            stopwatchState = stopwatchState,
+            formattedTimeString = formattedTimeString,
+            onStart = onStart,
+            onPause = onPause,
+            onResume = onResume,
+            onReset = onReset,
             onLab = { /*TODO*/ }
         )
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            stopwatchState.stop()
-        }
     }
 }
 
 @Composable
 private fun ActionButtons(
-    stopwatchStateValue: StopwatchStateValue,
+    stopwatchState: StopwatchState,
     formattedTimeString: String,
     onStart: () -> Unit,
     onPause: () -> Unit,
@@ -62,18 +60,18 @@ private fun ActionButtons(
     )
 
     Column(modifier = Modifier.padding(vertical = 32.dp)) {
-        when (stopwatchStateValue) {
-            StopwatchStateValue.START -> {
+        when (stopwatchState) {
+            StopwatchState.START -> {
                 PrimaryButton(text = "Pause", onClick = onPause)
                 SecondaryButton(text = "Lab", onClick = onLab)
             }
 
-            StopwatchStateValue.PAUSE -> {
+            StopwatchState.PAUSE -> {
                 PrimaryButton(text = "Resume", onClick = onResume)
                 SecondaryButton(text = "Reset", onClick = onReset)
             }
 
-            StopwatchStateValue.STOP -> {
+            StopwatchState.STOP -> {
                 PrimaryButton(text = "Start", onClick = onStart)
                 SecondaryButton(text = "Lab", enabled = false, onClick = onLab)
             }
