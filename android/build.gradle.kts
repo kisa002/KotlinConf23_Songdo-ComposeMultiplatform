@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.haeyum"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-Android"
 
 repositories {
     jcenter()
@@ -23,7 +23,9 @@ android {
         minSdkVersion(24)
         targetSdkVersion(33)
         versionCode = 1
-        versionName = "1.0-SNAPSHOT"
+        versionName = version.toString()
+
+        buildConfigField("String", "VERSION_NAME", "\"${versionName}\"")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

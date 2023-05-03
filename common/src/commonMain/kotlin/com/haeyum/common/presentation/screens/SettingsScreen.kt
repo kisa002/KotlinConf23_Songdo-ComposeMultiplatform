@@ -7,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.haeyum.common.getVersionName
 
 @Composable
 fun SettingsScreen(modifier: Modifier = Modifier) {
@@ -18,7 +19,7 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
         SomethingSwitch(checked = checked, onCheckedChange = { checked = it })
         ContactButton()
         Spacer(modifier = Modifier.weight(1f))
-        VersionText(version = "1.0.0")
+        VersionText(version = getVersionName())
     }
 }
 
